@@ -63,6 +63,14 @@ The XLogic Analyzer interface consists of several key components:
 - **Keyboard**: Press Left Arrow to pan left, Right Arrow to pan right.
 - **Edge Navigation**: When the mouse is near the left or right edge of a channel, arrow buttons (<<, >>) appear to navigate to the previous or next edge of the signal.
 
+### Navigation History
+
+- **Automatic History**: The application automatically records your zoom and pan actions, creating a history of view states.
+- **History Navigation**: You can quickly navigate backward and forward through your view history.
+  - **CTRL+Left Arrow**: Navigate to the previous view state (backward in history).
+  - **CTRL+Right Arrow**: Navigate to the next view state (forward in history).
+- This feature allows you to easily return to previous zoom levels or positions without manual adjustments.
+
 ## Working with Cursors
 
 Cursors are vertical markers that help measure time and analyze signals at specific points.
@@ -142,6 +150,8 @@ Channel groups help organize related channels together for better visualization 
 | Down Arrow | Zoom out |
 | Left Arrow | Pan left |
 | Right Arrow | Pan right |
+| CTRL+Left Arrow | Go to previous view (history navigation) |
+| CTRL+Right Arrow | Go to next view (history navigation) |
 | Mouse Wheel | Zoom in/out |
 | Left Mouse Button | Select, drag |
 | Right Mouse Button | Context menu, add cursor |
