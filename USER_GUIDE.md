@@ -4,13 +4,15 @@
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
 3. [Main Interface](#main-interface)
-4. [Working with Channels](#working-with-channels)
-5. [Navigation and Zooming](#navigation-and-zooming)
-6. [Working with Cursors](#working-with-cursors)
-7. [Analyzers and Protocols](#analyzers-and-protocols)
-8. [Channel Groups](#channel-groups)
-9. [Waveform Analysis](#waveform-analysis)
-10. [Keyboard Shortcuts](#keyboard-shortcuts)
+4. [Application Menus](#application-menus)
+5. [Working with Channels](#working-with-channels)
+6. [Navigation and Zooming](#navigation-and-zooming)
+7. [Ruler Mode](#ruler-mode)
+8. [Working with Cursors](#working-with-cursors)
+9. [Analyzers and Protocols](#analyzers-and-protocols)
+10. [Channel Groups](#channel-groups)
+11. [Waveform Analysis](#waveform-analysis)
+12. [Keyboard Shortcuts](#keyboard-shortcuts)
 
 ## Introduction
 
@@ -34,6 +36,48 @@ The XLogic Analyzer interface consists of several key components:
 - **Waveform Area**: The main display area showing the signal waveforms.
 - **Time Ruler**: Located at the top of the waveform area, shows time measurements.
 - **Status Bar**: Displays information about the current state of the analyzer.
+
+## Application Menus
+
+XLogic Analyzer provides a comprehensive menu system for accessing various features and functions.
+
+### App Menu
+
+- **File Operations**:
+  - **Open**: Open a supported file format (.sr, .dsl, .xlaf, .atkdl, .pxlogic).
+  - **Save/Save As**: Save the current session to a file (.xlaf or .sr format).
+  - **Exit**: Close the application.
+
+### View Menu
+
+- **Window Management**:
+  - Toggle visibility of different panels and windows.
+  - Reset window layout to default configuration.
+  - Switch between docked and floating windows.
+
+### Zoom/Pan Menu
+
+- **Zoom Controls**:
+  - **Zoom In** (Up Arrow): Increase magnification of the waveform view.
+  - **Zoom Out** (Down Arrow): Decrease magnification of the waveform view.
+  - **Zoom Full**: Adjust view to show the entire capture.
+
+- **History Navigation**:
+  - **Back in History** (Ctrl+Left Arrow): Navigate to the previous view state.
+  - **Forward in History** (Ctrl+Right Arrow): Navigate to the next view state.
+  - **View History Entries**: List of saved view states with time ranges.
+  - **Clear History**: Remove all saved view states.
+
+### Cursors Menu
+
+- **Cursor Visibility**:
+  - **Show Cursors**: Toggle the visibility of all cursors.
+
+- **Cursor Management**:
+  - **Add Cursor at Center**: Place a new cursor at the center of the current view.
+  - **Clear All Cursors**: Remove all cursors from the waveform.
+  - **Go to Cursor**: Jump to a specific cursor's position (submenu with all cursors).
+  - **Delete Cursor**: Remove a specific cursor (submenu with all cursors).
 
 ## Working with Channels
 
@@ -70,6 +114,31 @@ The XLogic Analyzer interface consists of several key components:
   - **CTRL+Left Arrow**: Navigate to the previous view state (backward in history).
   - **CTRL+Right Arrow**: Navigate to the next view state (forward in history).
 - This feature allows you to easily return to previous zoom levels or positions without manual adjustments.
+
+## Ruler Mode
+
+The ruler at the top of the waveform display can operate in two different modes:
+
+### Time Mode
+
+- **Default Mode**: Shows time measurements along the ruler.
+- Displays absolute and relative time values (e.g., "+1.5ms").
+- Time units automatically adjust based on zoom level (ns, µs, ms, s).
+- Provides precise timing information for signal analysis.
+- Major and minor divisions are automatically calculated based on the current time scale.
+
+### Sample Mode
+
+- **Alternative Mode**: Shows sample numbers along the ruler.
+- Useful when you need to know the exact sample position rather than time.
+- Particularly helpful for analyzing discrete data or when working with sample-specific operations.
+- Major and minor divisions are automatically calculated based on the current sample scale.
+
+### Switching Between Modes
+
+- Click the "Time" or "Sample" button in the toolbar to toggle between the two ruler modes.
+- The ruler display and measurements will update immediately to reflect the selected mode.
+- All cursor measurements will also display in the selected mode (time or sample).
 
 ## Working with Cursors
 
@@ -126,6 +195,15 @@ Channel groups help organize related channels together for better visualization 
 - **Adding Channels**: Drag a channel onto a group header to add it to the group.
 - **Removing Channels**: Drag a channel out of a group or right-click and select "Remove from Group".
 - **Deleting Groups**: Click the "..." button next to the group name and select "Delete Group".
+- **Group-Specific Channel Order**: Each group can have its own unique channel order, independent of the global order. To reorder channels within a group, drag and drop channels within the group.
+- **Group-Specific Channel Heights**: Each channel can have different heights in different groups. Adjust the height by dragging the separator between channels within a group.
+- **Channel Visibility**: You can show or hide bubble displays for specific channels within a group by using the channel context menu (click "..." next to a channel).
+
+### Working with Multiple Groups
+
+- A channel can be added to multiple groups simultaneously, allowing you to organize signals in different ways for different analysis purposes.
+- Each group maintains its own channel order and height settings, so you can optimize the view for specific analysis tasks.
+- When a channel appears in multiple groups, changes to its display properties in one group won't affect its appearance in other groups.
 
 ## Waveform Analysis
 
