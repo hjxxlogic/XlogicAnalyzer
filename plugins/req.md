@@ -1,0 +1,15 @@
+设计一个插件系统，要求如下：
+- Python 3 环境
+- 自动扫描 plugins/ 目录并动态加载插件
+- 在插件类成员上使用 `parameter(type, default)` 描述符定义参数（支持类型校验和默认值），并通过基类 `configure` 方法应用配置
+- 插件需继承 `Plugin` 抽象基类，统一实现 `execute()` 方法，返回 `Result` 实例
+- 在 `Result` 类中使用 `result(type, default)` 描述符定义输出字段（支持类型校验和默认值），并在 `__repr__` 中展示字段
+- 基于 `multiprocessing` 实现进程隔离，子进程内部执行插件逻辑并通过队列返回结果
+- `manager.py` 提供 `list_plugins()`, `get_plugin_params(name)`, `get_plugin_metadata(name)`, `run_plugin(name, cfg)` 等接口
+- 支持通过 `metadata(simple=True|False)` 指定执行模式：当 `simple=True` 时使用单一共享进程运行所有插件，否则为每次运行创建独立子进程。
+- `run_plugin` 异步执行插件并以 `AsyncIterator` 流式返回结果，执行中若插件抛出异常，会在主进程捕获并抛出
+- `get_plugin_params(name)` 返回插件参数的类型和默认值
+- `get_plugin_metadata(name)` 返回插件的元数据（例如名称、描述）
+- 提供 `example.py` 演示插件发现、参数配置、异步流式执行，并包含 `ErrorPlugin` 错误处理示例
+- 提供同步接口 `run_plugin_sync(name, cfg)` 和 `shutdown_simple_workers()` 用于轮询执行与清理共享进程。
+- 提供同步执行接口 `run_plugin_sync(name, cfg)`，返回带 `have_result()` 和 `get_result()` 方法的 Runner 对象
